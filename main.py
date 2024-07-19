@@ -70,25 +70,47 @@ def find_answer(user_question, qna_list):
             return True, answer
     return False, ""
 
+def bt_cmp(csv_file_path):
+    results = []
+    with open(csv_file_path, mode='r', newline='') as file:
+        reader = csv.DictReader(file)
+        for row in reader:
+            q1 = row['q1']
+            q2 = row['q2']
+            reference_answer = row['ref']
+
+            # Check the result of cmp_q and compare against the reference answer
+            result = (cmp_q(q1, q2) == (reference_answer.lower() == 'true'))
+            results.append(result)
+
+    return results
+
+print(bt_cmp("bt.csv"))
+# Example usage:
+# csv_file_path = 'batch_test.csv'
+# results = bt_cmp(csv_file_path)
+# print(results)
 
 
 # model_used = "gpt4" 
 # model_used = "claude-3-haiku-20240307"
 # Example usage:
 # Load the QNA list from a CSV file
-qna_list = load_qna_from_csv('qna.csv')
+# qna_list = load_qna_from_csv('qna.csv')
 
-# Define the user question
-user_question = "definition of AI?"
+# # Define the user question
+# user_question = "definition of AI?"
 
-# Find the answer
-found, answer = find_answer(user_question, qna_list)
-if found:
-    print(f"Answer: {answer}")
-    print(claude_chat("""ctxt : {}, question:{}, please answer in <answer></answer>""".format(
-        answer, user_question)))
-else:
-    print("Question not found in the QNA list.")
+# # Find the answer
+# found, answer = find_answer(user_question, qna_list)
+# if found:
+#     print(f"Answer: {answer}")
+#     print(claude_chat("""ctxt : {}, question:{}, please answer in <answer></answer>""".format(
+#         answer, user_question)))
+# else:
+#     print("Question not found in the QNA list.")
+
+
 
 
 

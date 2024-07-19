@@ -1,0 +1,6 @@
+q1,q2,ref
+"What is the capital of France?","What is the capital of France?",true
+"Define artificial intelligence.","What is AI?",true
+"What is the capital of Germany?","What is the capital of Italy?",false
+"Explain photosynthesis.","Describe the process of photosynthesis.",true
+"Who wrote 'To Kill a Mockingbird'?","Who is the author of '1984'?",false
