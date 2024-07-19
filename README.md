@@ -45,6 +45,7 @@ RAG and Agent(tool calling) are heavilty emphasized
 
 ### scratch 
 
+```
 def cmp_q(q1, q2):
 return q1.strip().lower() == q2.strip().lower()
 
@@ -78,3 +79,4 @@ model = ChatAnthropic(model=model_name)
 response = model.invoke(prompt)
 # Return the response
 return response.content
+```
